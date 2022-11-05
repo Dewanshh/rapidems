@@ -22,3 +22,9 @@ class Cardi {
       required this.bloodgroupAn,
       required this.and});
 }
+
+class ambu {
+  late final String name;
+  late final double charge;
+  ambu({required this.name, required this.charge});
+}

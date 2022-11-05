@@ -1,15 +1,6 @@
-import 'package:ambi/HomeScreen.dart';
-import 'package:ambi/LoinPage.dart';
-import 'package:ambi/Onboarding.dart';
-import 'package:ambi/home.dart';
-import 'package:ambi/patientdetails.dart';
-import 'package:ambi/screens/googlemap.dart';
-import 'package:ambi/sosscreen.dart';
 import 'package:ambi/splash.dart';
-import 'package:ambi/userapp.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

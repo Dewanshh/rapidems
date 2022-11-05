@@ -76,7 +76,6 @@ class _PatientState extends State<Patient> {
         child: MaterialButton(
           onPressed: () {
             try {
-              FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
               User? user = _auth.currentUser;
               UserModel userModel = UserModel();
               userModel.fname = fname;
@@ -89,7 +88,7 @@ class _PatientState extends State<Patient> {
                   .doc(user.uid)
                   .set(userModel.toMap());
               if (aull != null) {
-                Navigator.pushReplacement(context,
+                Navigator.push(context,
                     MaterialPageRoute(builder: (context) => HomeScreen()));
               }
             } catch (e) {

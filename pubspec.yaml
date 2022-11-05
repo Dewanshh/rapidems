@@ -33,24 +33,26 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-  animated_splash_screen: ^1.2.0
-  lottie: ^1.2.2
-  flutter_svg: ^1.0.3
-  animated_text_kit: ^4.2.1
-  cloud_firestore: ^3.1.12
-  firebase_core: ^1.14.1
-  firebase_auth: ^3.3.14
-  flutter_phone_direct_caller: ^2.1.0
+  cupertino_icons: ^1.0.5
+  animated_splash_screen: ^1.3.0
+  lottie: ^1.4.3
+  flutter_svg: ^1.1.6
+  animated_text_kit: ^4.2.2
+  cloud_firestore: ^4.0.4
+  firebase_core: ^2.1.1
+  firebase_auth: ^4.1.1
+  flutter_phone_direct_caller: ^2.1.1
   holding_gesture: ^1.1.0
-  google_maps_flutter: ^2.1.4
-  geolocator: ^8.2.0
-  geocoding: ^2.0.4
-  http: ^0.13.4
+  google_maps_flutter: ^2.2.1
+  geolocator: ^9.0.0
+  geocoding: ^2.0.5
+  http: ^0.13.5
   flutter_polyline_points: ^1.0.0
   flutter_google_places: ^0.3.0
   dio: ^4.0.6
-  maps_toolkit: ^2.0.0
+  google_api_headers: ^1.5.0
+  flutter_google_places_hoc081098: ^1.0.0-nullsafety.1
+  google_maps_webservice: ^0.0.20-nullsafety.5
 
 
 

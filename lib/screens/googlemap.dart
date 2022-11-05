@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:ambi/ambibook.dart';
 import 'package:ambi/requests/googlemapservices.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_google_places/flutter_google_places.dart';
@@ -28,9 +29,9 @@ class MapSample extends StatefulWidget {
 }
 
 class MapSampleState extends State<MapSample> {
+  late Position _currentPosition;
   CameraPosition _initialLocation = CameraPosition(target: LatLng(0.0, 0.0));
   late GoogleMapController mapController;
-  late Position _currentPosition;
   String _currentAddress = '';
   final startAddressController = TextEditingController();
   final destinationAddressController = TextEditingController();
@@ -39,6 +40,7 @@ class MapSampleState extends State<MapSample> {
   String _startAddress = '';
   String _destinationAddress = '';
   String? _placeDistance;
+  double xss = 0.0;
   Set<Marker> markers = {};
   late PolylinePoints polylinePoints;
   Map<PolylineId, Polyline> polylines = {};
@@ -135,13 +137,9 @@ class MapSampleState extends State<MapSample> {
 // Method for calculating the distance between two places
   Future<bool> _calculateDistance() async {
     try {
-// Retrieving placemarks from addresses
       List<Location>? startPlacemark = await locationFromAddress(_startAddress);
       List<Location>? destinationPlacemark =
           await locationFromAddress(_destinationAddress);
-// Use the retrieved coordinates of the current position,
-// instead of the address if the start position is user's
-// current position, as it results in better accuracy.
       double startLatitude = _startAddress == _currentAddress
           ? _currentPosition.latitude
           : startPlacemark[0].latitude;
@@ -234,6 +232,7 @@ class MapSampleState extends State<MapSample> {
       }
       setState(() {
         _placeDistance = totalDistance.toStringAsFixed(2);
+        xss = totalDistance;
         print('DISTANCE: $_placeDistance km');
       });
       return true;
@@ -263,7 +262,7 @@ class MapSampleState extends State<MapSample> {
   ) async {
     polylinePoints = PolylinePoints();
     PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
-      "AIzaSyAvVnjjfmUPs7_nNkKQaR8xjPZZ_SXA2RU", // Google Maps API Key
+      "AIzaSyAgZWTx5Y--33AokTbVxFWCB3Y1aq8pjc0", // Google Maps API Key
       PointLatLng(startLatitude, startLongitude),
       PointLatLng(destinationLatitude, destinationLongitude),
       travelMode: TravelMode.transit,
@@ -431,55 +430,77 @@ class MapSampleState extends State<MapSample> {
                             ),
                           ),
                           SizedBox(height: 5),
-                          ElevatedButton(
-                            onPressed: (_startAddress != '' &&
-                                    _destinationAddress != '')
-                                ? () async {
-                                    startAddressFocusNode.unfocus();
-                                    desrinationAddressFocusNode.unfocus();
-                                    setState(() {
-                                      if (markers.isNotEmpty) markers.clear();
-                                      if (polylines.isNotEmpty)
-                                        polylines.clear();
-                                      if (polylineCoordinates.isNotEmpty)
-                                        polylineCoordinates.clear();
-                                      _placeDistance = null;
-                                    });
-                                    _calculateDistance().then((isCalculated) {
-                                      if (isCalculated) {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                                'Distance Calculated Sucessfully'),
-                                          ),
-                                        );
-                                      } else {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          SnackBar(
-                                            content: Text(
-                                                'Error Calculating Distance'),
-                                          ),
-                                        );
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ElevatedButton(
+                                onPressed: (_startAddress != '' &&
+                                        _destinationAddress != '')
+                                    ? () async {
+                                        startAddressFocusNode.unfocus();
+                                        desrinationAddressFocusNode.unfocus();
+                                        setState(() {
+                                          if (markers.isNotEmpty)
+                                            markers.clear();
+                                          if (polylines.isNotEmpty)
+                                            polylines.clear();
+                                          if (polylineCoordinates.isNotEmpty)
+                                            polylineCoordinates.clear();
+                                          _placeDistance = null;
+                                        });
+                                        _calculateDistance()
+                                            .then((isCalculated) {
+                                          if (isCalculated) {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                    'Distance Calculated Sucessfully'),
+                                              ),
+                                            );
+                                          } else {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                    'Error Calculating Distance'),
+                                              ),
+                                            );
+                                          }
+                                        });
                                       }
-                                    });
-                                  }
-                                : null,
+                                    : null,
 // color: Colors.red,
 // shape: RoundedRectangleBorder(
 //   borderRadius: BorderRadius.circular(20.0),
 // ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'Show Route'.toUpperCase(),
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20.0,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'Show Route'.toUpperCase(),
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20.0,
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ambibook(km: xss)));
+                                    },
+                                    child: Text(
+                                      "Book Now".toUpperCase(),
+                                      style: TextStyle(fontSize: 20),
+                                    )),
+                              )
+                            ],
                           ),
                         ],
                       ),
@@ -489,40 +510,55 @@ class MapSampleState extends State<MapSample> {
               ),
             ),
 // Show current location button
-            SafeArea(
-              child: Align(
-                alignment: Alignment.bottomRight,
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 10.0, bottom: 10.0),
-                  child: ClipOval(
-                    child: Material(
-                      color: Colors.orange.shade100, // button color
-                      child: InkWell(
-                        splashColor: Colors.orange, // inkwell color
-                        child: SizedBox(
-                          width: 56,
-                          height: 56,
-                          child: Icon(Icons.my_location),
-                        ),
-                        onTap: () {
-                          mapController.animateCamera(
-                            CameraUpdate.newCameraPosition(
-                              CameraPosition(
-                                target: LatLng(
-                                  _currentPosition.latitude,
-                                  _currentPosition.longitude,
-                                ),
-                                zoom: 18.0,
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+//             SafeArea(
+//               child: Align(
+//                 alignment: Alignment.bottomRight,
+//                 child: Padding(
+//                   padding: const EdgeInsets.only(right: 10.0, bottom: 10.0),
+//                   child: ClipOval(
+//                     child: Material(
+//                       color: Colors.orange.shade100, // button color
+//                       child: InkWell(
+//                         splashColor: Colors.orange, // inkwell color
+//                         child: SizedBox(
+//                           width: 56,
+//                           height: 56,
+//                           child: Icon(Icons.my_location),
+//                         ),
+//                         onTap: () {
+//                           print("++++++++++" +
+//                               _currentPosition.latitude.toString());
+//                           mapController.animateCamera(
+//                             CameraUpdate.newCameraPosition(
+//                               CameraPosition(
+//                                 target: LatLng(
+//                                   _currentPosition.latitude,
+//                                   _currentPosition.longitude,
+//                                 ),
+//                                 zoom: 18.0,
+//                               ),
+//                             ),
+//                           );
+//                         },
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//             ),
+//             SafeArea(
+//               child: Align(
+//                 alignment: Alignment.center,
+//                 child: ListView.builder(
+//                   itemBuilder: (BuildContext context, int index) {
+//                     return Container(
+//                       child: Text("Basic Life Suppourt"),
+//                     );
+//                   },
+//                   itemCount: 4,
+//                 ),
+//               ),
+//             )
           ],
         ),
       ),

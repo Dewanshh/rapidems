@@ -93,7 +93,7 @@ class _OnboardingState extends State<Onboarding> {
             width: double.infinity,
             margin: EdgeInsets.all(40),
             height: 55,
-            child: FlatButton(
+            child: ElevatedButton(
               child: Text(
                 currentIndex == contents.length - 1 ? "Continue" : "Next",
                 style: TextStyle(
@@ -114,11 +114,8 @@ class _OnboardingState extends State<Onboarding> {
                     duration: Duration(milliseconds: 200),
                     curve: Curves.bounceIn);
               },
-              color: Colors.orangeAccent,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
             ),
-          )
+          ),
         ],
       ),
     );

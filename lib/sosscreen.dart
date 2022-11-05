@@ -158,7 +158,7 @@ Widget BuildCard(CardItem item, context) {
       child: Container(
         padding: EdgeInsets.all(20),
         margin: EdgeInsets.only(left: 20),
-        height: 120,
+        height: 160,
         width: 200,
         child: Column(children: [
           Text(
@@ -168,18 +168,8 @@ Widget BuildCard(CardItem item, context) {
                 letterSpacing: 1.2,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
-                fontSize: 20),
+                fontSize: 18),
           ),
-          SizedBox(
-            height: 3,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              item.s,
-              item.s,
-            ],
-          )
         ]),
         decoration: BoxDecoration(
           color: Colors.red,

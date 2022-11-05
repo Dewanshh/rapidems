@@ -1,5 +1,3 @@
-import 'package:ambi/BloodBank.dart';
-import 'package:ambi/patientdetails.dart';
 import 'package:ambi/screens/googlemap.dart';
 import 'package:ambi/sosscreen.dart';
 import 'package:ambi/userapp.dart';

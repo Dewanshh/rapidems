@@ -58,3 +58,21 @@ List<Cardi> dat = [
     apd: "41 units",
   )
 ];
+List<ambu> amdata = [
+  ambu(
+    name: "Basic Life Support",
+    charge: 30,
+  ),
+  ambu(
+    name: "Advanced Life Support",
+    charge: 50,
+  ),
+  ambu(
+    name: "Patient Transfer Vehicle",
+    charge: 20,
+  ),
+  ambu(
+    name: "Medical Utility Vehicle",
+    charge: 22,
+  )
+];

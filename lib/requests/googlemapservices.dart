@@ -8,7 +8,7 @@ import 'package:ambi/screens/googlemap.dart';
 import 'package:dio/dio.dart';
 
 class locationservice {
-  static final String key = "AIzaSyBr5jIa3Pt-J15Wn09mxc1izi-TuaL4MX0";
+  static final String key = "AIzaSyAgZWTx5Y--33AokTbVxFWCB3Y1aq8pjc0";
   static Future<String> getPlaced(String input) async {
     final String url =
         'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=$input&inputtype=textquery&key=$key';

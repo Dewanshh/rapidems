@@ -117,7 +117,7 @@ class _LoginPageState extends State<LoginPage>
                                   email: email, password: pswd);
                           if (newUser != null) {
                             print("Registerd Succesfully");
-                            Navigator.pushReplacement(
+                            Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Patient()));

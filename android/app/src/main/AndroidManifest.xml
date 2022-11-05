@@ -2,13 +2,14 @@
     package="com.example.ambi">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
    <application
         android:label="ambi"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
        <meta-data
            android:name="com.google.android.geo.API_KEY"
-           android:value="AIzaSyBr5jIa3Pt-J15Wn09mxc1izi-TuaL4MX0"/>
+           android:value="AIzaSyAgZWTx5Y--33AokTbVxFWCB3Y1aq8pjc0"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

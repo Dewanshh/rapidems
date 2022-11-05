@@ -20,7 +20,7 @@ class _SplashState extends State<Splash> {
 
   _navigatetohome() async {
     await Future.delayed(Duration(milliseconds: 5000), () {});
-    Navigator.pushReplacement(
+    Navigator.push(
         context, MaterialPageRoute(builder: (context) => Onboarding()));
   }
 
@@ -45,12 +45,12 @@ class _SplashState extends State<Splash> {
             alignment: Alignment.bottomCenter,
             child: RichText(
               text: TextSpan(
-                text: 'Rapid',
+                text: 'Roc',
                 style: TextStyle(
                     fontFamily: 'Varela', color: Colors.black, fontSize: 28),
                 children: const <TextSpan>[
                   TextSpan(
-                      text: 'EMS',
+                      text: 'AID',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.red,
