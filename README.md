@@ -39,3 +39,5 @@ Novelty/USP's:-
 6.) Data of blood availability from blood banks will be available to user.
 7.) Rapid Ambulance Service with four alternatives: 1. Basic life support Ambulance 2. Advance life support Ambulance 3. Patient transport vehicle 4. Medical Utility Vehicle.
 
+PPT LINK
+https://docs.google.com/presentation/d/1hedBGWh_xmAWdavFlbZD810jwFWBXL_8/edit?usp=sharing&ouid=113127466327450957382&rtpof=true&sd=true
