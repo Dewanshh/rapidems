@@ -71,8 +71,4 @@ List<ambu> amdata = [
     name: "Patient Transfer Vehicle",
     charge: 20,
   ),
-  ambu(
-    name: "Medical Utility Vehicle",
-    charge: 22,
-  )
 ];

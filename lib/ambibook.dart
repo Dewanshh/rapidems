@@ -13,6 +13,7 @@ class ambibook extends StatefulWidget {
 }
 
 var price = 12.0;
+var p1 = 0.0;
 var p2 = 0.0;
 var p3 = 0.0;
 var index = 0;
@@ -36,13 +37,23 @@ class _ambibookState extends State<ambibook> {
           return SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Text(
+                  "Choose Ambulance Type ",
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
                 SizedBox(height: 20),
                 InkWell(
                   onTap: () {
                     setState(() {
                       index = 0;
                       price = amdata[0].charge as double;
+                      p1 = price * (widget.km);
+
                       p2 = (price * (widget.km) * (5 / 100)) as double;
                       p3 = ((price * (widget.km) * (5 / 100)) +
                           (price * (widget.km))) as double;
@@ -71,7 +82,9 @@ class _ambibookState extends State<ambibook> {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Text("Rate: "),
-                                  Text(amdata[0].charge.toString()),
+                                  Text("₹" +
+                                      amdata[0].charge.toStringAsFixed(2) +
+                                      " /k.m."),
                                 ],
                               ),
                               SizedBox(
@@ -101,6 +114,7 @@ class _ambibookState extends State<ambibook> {
                     setState(() {
                       index = 1;
                       price = amdata[1].charge as double;
+                      p1 = price * (widget.km);
                       p2 = (price * (widget.km) * (5 / 100)) as double;
                       p3 = ((price * (widget.km) * (5 / 100)) +
                           (price * (widget.km))) as double;
@@ -129,7 +143,9 @@ class _ambibookState extends State<ambibook> {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Text("Rate: "),
-                                  Text(amdata[2].charge.toString()),
+                                  Text("₹" +
+                                      amdata[1].charge.toStringAsFixed(2) +
+                                      " /k.m.")
                                 ],
                               ),
                               SizedBox(
@@ -139,14 +155,19 @@ class _ambibookState extends State<ambibook> {
                               SizedBox(
                                 height: 10,
                               ),
-                              Text("Medical Technicians"),
+                              Text("Paramedic Professional"),
                               SizedBox(
                                 height: 10,
                               ),
-                              Text("Basic Medical Equipments"),
+                              Text("Advanced Medical Equipments like: "),
                               SizedBox(
                                 height: 10,
                               ),
+                              Text("Advanced Airway"),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text("Cardiac Monitor, etc."),
                             ],
                           ),
                         ],
@@ -158,7 +179,9 @@ class _ambibookState extends State<ambibook> {
                   onTap: () {
                     setState(() {
                       index = 2;
+
                       price = amdata[2].charge as double;
+                      p1 = price * (widget.km);
                       p2 = (price * (widget.km) * (5 / 100)) as double;
                       p3 = ((price * (widget.km) * (5 / 100)) +
                           (price * (widget.km))) as double;
@@ -187,7 +210,9 @@ class _ambibookState extends State<ambibook> {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Text("Rate: "),
-                                  Text(amdata[2].charge.toString()),
+                                  Text("₹" +
+                                      amdata[2].charge.toStringAsFixed(2) +
+                                      " /k.m.")
                                 ],
                               ),
                               SizedBox(
@@ -201,65 +226,7 @@ class _ambibookState extends State<ambibook> {
                               SizedBox(
                                 height: 10,
                               ),
-                              Text("Basic Medical Equipments"),
-                              SizedBox(
-                                height: 10,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      index = 3;
-                      price = amdata[3].charge as double;
-                      p2 = (price * (widget.km) * (5 / 100)) as double;
-                      p3 = ((price * (widget.km) * (5 / 100)) +
-                          (price * (widget.km))) as double;
-                    });
-                    print("+++++++++++++++++++++++++++++++++++++++++$p2");
-                  },
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    elevation: 3 != 0 ? 14 : 10,
-                    color: Colors.white,
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(amdata[3].name.toString()),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Text("Rate: "),
-                                  Text(amdata[3].charge.toString()),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text("Includes: "),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text("Medical Technicians"),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text("Basic Medical Equipments"),
+                              Text("Oxygen Support"),
                               SizedBox(
                                 height: 10,
                               ),
@@ -291,13 +258,13 @@ class _ambibookState extends State<ambibook> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(price.toString()),
+                        Text(p1.toStringAsFixed(2)),
                         SizedBox(
                           height: 20,
                         ),
-                        Text(p2.toString()),
+                        Text(p2.toStringAsFixed(2)),
                         SizedBox(height: 20),
-                        Text(p3.toString()),
+                        Text(p3.toStringAsFixed(2)),
                       ],
                     )
                   ],

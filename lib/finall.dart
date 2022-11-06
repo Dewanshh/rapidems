@@ -35,7 +35,7 @@ class _flState extends State<fl> {
               height: 100,
             ),
             Text(
-              "Hold Back! We are on the way.",
+              "Hold Back! Ambulance on your way",
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             SizedBox(
