@@ -17,7 +17,7 @@ class _flState extends State<fl> {
   }
 
   _navigatetohome() async {
-    await Future.delayed(Duration(milliseconds: 5000), () {});
+    await Future.delayed(Duration(milliseconds: 10000), () {});
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => Myhomepage()));
   }
@@ -58,6 +58,20 @@ class _flState extends State<fl> {
                   ],
                 ),
               ),
+            ),
+            SizedBox(
+              height: 100,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                'Cancel Booking',
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
             )
           ],
         ),

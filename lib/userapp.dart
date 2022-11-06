@@ -1,3 +1,4 @@
+import 'package:ambi/screens/about.dart';
 import 'package:ambi/usermodel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -42,32 +43,154 @@ class _MyAccState extends State<MyAcc> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 50,
+                height: 20,
               ),
-              RichText(
-                text: TextSpan(
-                    text: "Hi ",
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 25),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TextSpan(
-                          text: "${loggedinUser.fname} ${loggedinUser.lname}",
-                          style: TextStyle(
+                      Container(
+                        width: 200,
+                        child: RichText(
+                          maxLines: 1,
+                          text: TextSpan(
+                              text: "${loggedinUser.fname}" +
+                                  " " +
+                                  "${loggedinUser.lname}",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: 30)),
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      Container(
+                        padding: EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                            color: Colors.grey.shade200,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.star,
                               color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25)),
-                    ]),
+                            ),
+                            Text(
+                              " 5.0",
+                              style: TextStyle(fontSize: 14),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                  Center(
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage("images/gh.webp"),
+                      radius: 50,
+                    ),
+                  ),
+                ],
               ),
               SizedBox(
                 height: 30,
               ),
-              Center(
-                child: CircleAvatar(
-                  backgroundImage: AssetImage("images/gh.webp"),
-                  radius: 100,
-                ),
+              Row(
+                children: [
+                  Container(
+                    height: 100,
+                    width: 100,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          child: Icon(
+                            Icons.support,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 4,
+                        ),
+                        Text(
+                          "Help",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w100,
+                              fontSize: 18),
+                        )
+                      ],
+                    ),
+                    decoration: BoxDecoration(
+                        color: Colors.grey.shade200,
+                        borderRadius: BorderRadius.circular(10)),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Container(
+                    height: 100,
+                    width: 100,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          child: Icon(
+                            Icons.wallet,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 4,
+                        ),
+                        Text(
+                          "Wallet",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w100,
+                              fontSize: 18),
+                        )
+                      ],
+                    ),
+                    decoration: BoxDecoration(
+                        color: Colors.grey.shade200,
+                        borderRadius: BorderRadius.circular(10)),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Container(
+                    height: 100,
+                    width: 100,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          child: Icon(
+                            Icons.schedule,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 4,
+                        ),
+                        Text(
+                          "Trips",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w100,
+                              fontSize: 18),
+                        )
+                      ],
+                    ),
+                    decoration: BoxDecoration(
+                        color: Colors.grey.shade200,
+                        borderRadius: BorderRadius.circular(10)),
+                  ),
+                ],
               ),
               SizedBox(
                 height: 30,
@@ -86,12 +209,12 @@ class _MyAccState extends State<MyAcc> {
                           height: 40,
                         ),
                         Text(
-                          "Invite Friends",
+                          "HackCBS",
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          "Earn \$20",
+                          "",
                           style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.bold,
@@ -112,8 +235,10 @@ class _MyAccState extends State<MyAcc> {
               SizedBox(
                 height: 40,
               ),
-              GestureDetector(
+              InkWell(
                 onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => aboutt()));
                   print("Know About us");
                 },
                 child: Row(
@@ -212,7 +337,7 @@ class _MyAccState extends State<MyAcc> {
               ),
               Center(
                 child: Text(
-                  "Beta Version: 10.0.2.1",
+                  "Made by ❤️ in HackCBS 5.0",
                   style: TextStyle(
                       color: Colors.grey,
                       fontSize: 20,
