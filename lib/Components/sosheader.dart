@@ -36,7 +36,6 @@ class _sosheaderState extends State<sosheader> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           GestureDetector(
             onTap: () {
@@ -47,6 +46,9 @@ class _sosheaderState extends State<sosheader> {
               backgroundImage: AssetImage("images/gh.webp"),
               radius: 20,
             ),
+          ),
+          SizedBox(
+            width: 20,
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 0, vertical: 10),

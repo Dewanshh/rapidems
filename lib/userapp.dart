@@ -43,7 +43,7 @@ class _MyAccState extends State<MyAcc> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 20,
+                height: 40,
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -102,7 +102,7 @@ class _MyAccState extends State<MyAcc> {
                 children: [
                   Container(
                     height: 100,
-                    width: 100,
+                    width: 120,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -133,7 +133,7 @@ class _MyAccState extends State<MyAcc> {
                   ),
                   Container(
                     height: 100,
-                    width: 100,
+                    width: 120,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -164,7 +164,7 @@ class _MyAccState extends State<MyAcc> {
                   ),
                   Container(
                     height: 100,
-                    width: 100,
+                    width: 130,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

@@ -50,9 +50,12 @@ class _sosState extends State<sos> {
           margin: EdgeInsets.only(left: 2),
           child: Column(children: [
             SizedBox(
-              height: 10,
+              height: 20,
             ),
             sosheader(),
+            SizedBox(
+              height: 20,
+            ),
             Text(
               "Emergency help needed?",
               textAlign: TextAlign.center,
@@ -158,19 +161,22 @@ Widget BuildCard(CardItem item, context) {
       child: Container(
         padding: EdgeInsets.all(20),
         margin: EdgeInsets.only(left: 20),
-        height: 160,
+        height: 100,
         width: 200,
-        child: Column(children: [
-          Text(
-            "${item.help}",
-            textAlign: TextAlign.left,
-            style: TextStyle(
-                letterSpacing: 1.2,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 18),
-          ),
-        ]),
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                "${item.help}",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                    letterSpacing: 1.2,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18),
+              ),
+            ]),
         decoration: BoxDecoration(
           color: Colors.red,
           borderRadius: BorderRadius.circular(10),
